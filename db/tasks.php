@@ -15,34 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Auth plugin "LDAP SyncPlus" - Scheduled tasks
+ * Scheduled task for local_datafetcher
  *
- * @package    auth_ldap_syncplus
- * @copyright  2014 Alexander Bias, Ulm University <alexander.bias@uni-ulm.de>
+ * @package    local_datafetcher
+ * @author     Eric Bjella <eric.bjella@remote-learner.net>
+ * @copyright  2018 onwards Remote Learner Inc http://www.remote-learner.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $tasks = array(
-    array(
-        'classname' => 'auth_ldap_syncplus\task\sync_roles',
-        'blocking' => 0,
-        'minute' => '0',
-        'hour' => '0',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '*',
-        'disabled' => 1
-    ),
-    array(
-        'classname' => 'auth_ldap_syncplus\task\sync_task',
-        'blocking' => 0,
-        'minute' => '0',
-        'hour' => '0',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '*',
-        'disabled' => 1
-    )
+        array(
+            'classname'   => '\local_datafetcher\task\fetch_data',
+            'blocking'    => 0,
+            'minute'      => '59',
+            'hour'        => '23',
+            'day'         => '*',
+            'month'       => '*',
+            'dayofweek'   => '*'
+        )
 );

@@ -15,19 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Auth plugin "LDAP SyncPlus" - Version file
  *
- * @package    auth_ldap_syncplus
- * @copyright  2014 Alexander Bias, Ulm University <alexander.bias@uni-ulm.de>
+ * @package    local_datafetcher
+ * @author     Eric Bjella <eric.bjella@remote-learner.net>
+ * @copyright  2018 onwards Remote Learner Inc http://www.remote-learner.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'auth_ldap_syncplus';
-$plugin->version = 2020121100;
-$plugin->release = 'v3.10-r1';
-$plugin->requires = 2020110900;
-$plugin->supported = [310, 310];
+$plugin->version = 2020061500;
+$plugin->requires = 2020061500;
+$plugin->component = 'local_datafetcher';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = array('auth_ldap' => 2020110900);
+$plugin->release = '3.9.0.0';

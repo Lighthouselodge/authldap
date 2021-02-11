@@ -15,33 +15,40 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Auth plugin "LDAP SyncPlus" - Privacy provider
+ * fetch_data class for local_datafetcher
  *
- * @package    auth_ldap_syncplus
- * @copyright  2018 Alexander Bias, Ulm University <alexander.bias@uni-ulm.de>
+ * @package    local_datafetcher
+ * @author     Eric Bjella <eric.bjella@remote-learner.net>
+ * @copyright  2018 onwards Remote Learner Inc http://www.remote-learner.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 
-namespace auth_ldap_syncplus\privacy;
-
-defined('MOODLE_INTERNAL') || die();
+namespace local_datafetcher\task;
+use core\task\scheduled_task;
 
 /**
- * Privacy Subsystem implementing null_provider.
+ * A scheduled task for local_datafetcher cron.
  *
- * @package    auth_ldap_syncplus
- * @copyright  2018 Alexander Bias, Ulm University <alexander.bias@uni-ulm.de>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements \core_privacy\local\metadata\null_provider {
+class fetch_data extends scheduled_task {
 
     /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
+     * Get a descriptive name for this task (shown to admins).
      *
      * @return string
      */
-    public static function get_reason() : string {
-        return 'privacy:metadata';
+    public function get_name() {
+        return get_string('datafetchercron', 'local_datafetcher');
     }
+
+    /**
+     * Run Datafetcher cron.
+     */
+    public function execute() {
+        global $CFG;
+        require_once($CFG->dirroot.'/local/datafetcher/lib.php');
+        local_datafetcher_cron_scheduledtask();
+    }
+
 }

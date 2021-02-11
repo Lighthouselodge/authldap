@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Data fetcher - Settings page
+ * Strings for component 'local_datafetcher', language 'en'
  *
  * @package    local_datafetcher
  * @author     Eric Bjella <eric.bjella@remote-learner.net>
@@ -23,22 +23,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+$string['pluginname'] = 'Data fetcher';
 
-$plugin = 'local_datafetcher';
-
-if ($hassiteconfig) {
-    $settings = new \admin_settingpage($plugin, get_string('pluginname', $plugin));
-
-    $settings->add(new admin_setting_configtext($plugin.'/urltofetch', get_string('urltofetch', $plugin),
-                   get_string('urltofetchdesc', $plugin), ''));
-
-    $settings->add(new admin_setting_configpasswordunmask($plugin.'/authcredentials', get_string('authcredentials', $plugin),
-                   get_string('authcredentialsdesc', $plugin), ''));
-
-    $settings->add(new admin_setting_configtext($plugin.'/datafile', get_string('datafile', $plugin),
-                   get_string('datafiledesc', $plugin), ''));
-
-    $ADMIN->add('localplugins', $settings);
-
-}
+$string['authcredentials'] = 'Authentication credentials';
+$string['authcredentialsdesc'] = 'Enter authentication credentials required to retrieve the data from the url (username:password). If empty, credentials will not be used.';
+$string['datafetchercron'] = 'Data fetcher scheduled task';
+$string['datafile'] = 'Data file name';
+$string['datafiledesc'] = 'Enter the file name and path relative to the data directory where the data should be stored.';
+$string['urltofetch'] = 'URL';
+$string['urltofetchdesc'] = 'Enter the URL that should be used to fetch data.';
